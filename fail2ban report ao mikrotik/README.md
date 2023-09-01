@@ -119,4 +119,5 @@ banaction_allports = mkblackhole
 service fail2ban restart
 ```
 
-## Se seguiu tudo a risca, então é só conferir os logs do seu mikrotik.
+## Se seguiu tudo a risca, então é só conferir os logs do seu mikrotik como no exemplo abaixo.
+![Captura de tela 2023-09-01 095639](https://github.com/joandson19/Fail2Ban/assets/36518985/863e14b1-ab9a-428a-87e5-0f2f5dbf6bcf)
