@@ -39,7 +39,7 @@ def add_blackhole(ip_address):
             print(f"O IP {ip_address} pertence a uma rede local e não pode ser adicionado à lista de blackhole.")
         else:
             # Execute o comando para adicionar o IP à lista de blackhole
-            command = f"/ip route add dst-address={ip_address} blackhole"
+            command = f'/ip route add dst-address={ip_address} blackhole comment="Added by fail2ban"'
             ssh.exec_command(command)
             print(f"O IP {ip_address} foi adicionado à lista de blackhole com sucesso.")
     except Exception as e:
