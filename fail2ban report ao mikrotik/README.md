@@ -1,3 +1,9 @@
+# Primeiramento se voc√™ tem o fail2ban, certamente tem o python.
+# Ent√£o iremos precisar de alguns modulos do python 
+```
+pip install paramiko ipaddress
+```
+
 # Crie o arquivo blackhole-ban na pasta /usr/bin
 ```
 nano /usr/binblackhole-ban
@@ -10,12 +16,12 @@ import paramiko
 import sys
 import ipaddress
 
-# Defina as informaÁıes de conex„o SSH com o dispositivo MikroTik
+# Defina as informa√ß√µes de conex√£o SSH com o dispositivo MikroTik
 router_ip = 'IP DO MIKROTIK'
 router_username = 'USUARIO FAIL2BAN'
 router_password = 'SENHA'
 
-# Defina as informaÁıes da sua rede local com m˙ltiplos prefixos
+# Defina as informa√ß√µes da sua rede local com m√∫ltiplos prefixos
 redes_locais = [
     ipaddress.IPv4Network('192.168.1.0/24'),
     ipaddress.IPv4Network('10.0.0.0/8'),
@@ -30,14 +36,14 @@ def add_blackhole(ip_address):
 
         # Verifique se o IP fornecido pertence a uma rede local
         if is_local_ip(ip_address):
-            print(f"O IP {ip_address} pertence a uma rede local e n„o pode ser adicionado ‡ lista de blackhole.")
+            print(f"O IP {ip_address} pertence a uma rede local e n√£o pode ser adicionado √† lista de blackhole.")
         else:
-            # Execute o comando para adicionar o IP ‡ lista de blackhole
+            # Execute o comando para adicionar o IP √† lista de blackhole
             command = f"/ip route add dst-address={ip_address} blackhole"
             ssh.exec_command(command)
-            print(f"O IP {ip_address} foi adicionado ‡ lista de blackhole com sucesso.")
+            print(f"O IP {ip_address} foi adicionado √† lista de blackhole com sucesso.")
     except Exception as e:
-        print(f"Erro ao adicionar o IP {ip_address} ‡ lista de blackhole: {str(e)}")
+        print(f"Erro ao adicionar o IP {ip_address} √† lista de blackhole: {str(e)}")
     finally:
         ssh.close()
 
@@ -80,7 +86,7 @@ if __name__ == '__main__':
     elif action == 'remove':
         remove_blackhole(ip_address)
     else:
-        print("AÁ„o inv·lida. Use 'add' para adicionar ou 'remove' para remover.")
+        print("A√ß√£o inv√°lida. Use 'add' para adicionar ou 'remove' para remover.")
 ```
 
 # Crie o arquivo mkblackhole.conf na pasta /etc/fail2ban/action.d/ e coloque o script abaixo.
@@ -113,4 +119,4 @@ banaction_allports = mkblackhole
 service fail2ban restart
 ```
 
-## Se seguiu tudo a risca, ent„o È sÛ conferir os logs do seu mikrotik.
+## Se seguiu tudo a risca, ent√£o √© s√≥ conferir os logs do seu mikrotik.
