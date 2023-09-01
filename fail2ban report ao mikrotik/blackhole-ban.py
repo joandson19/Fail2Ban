@@ -43,7 +43,7 @@ def remove_blackhole(ip_address):
         ssh.connect(router_ip, username=router_username, password=router_password)
 
         # Execute o comando para remover o IP da lista de blackhole
-        command = f"/ip route remove [find dst-address={ip_address}]"
+        command = f'/ip route add dst-address={ip_address} blackhole comment="Added by fail2ban"'
         ssh.exec_command(command)
         print(f"O IP {ip_address} foi removido da lista de blackhole com sucesso.")
     except Exception as e:
