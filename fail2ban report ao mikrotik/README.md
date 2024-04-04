@@ -6,7 +6,7 @@ pip install paramiko ipaddress
 
 # Crie o arquivo blackhole-ban na pasta /usr/bin
 ```
-nano /usr/binblackhole-ban
+nano /usr/bin/blackhole-ban
 ```
 * Dentro do arquivo cole o script abaixo
 ```
