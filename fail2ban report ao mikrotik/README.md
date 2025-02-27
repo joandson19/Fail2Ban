@@ -5,9 +5,10 @@ pip3 install paramiko ipaddress routeros_api
 ```
 
 # baixe o arquivo blackhole-ban na pasta /usr/bin
-nano /usr/bin/blackhole-ban
-
-
+```
+wget https://raw.githubusercontent.com/joandson19/Fail2Ban/refs/heads/main/fail2ban%20report%20ao%20mikrotik/blackhole-ban -O /usr/bin/blackhole-ban
+chmod +x /usr/bin/blackhole-ban
+```
 # Crie o arquivo mkblackhole.conf na pasta /etc/fail2ban/action.d/ e coloque o script abaixo.
 ```
 [Definition]
